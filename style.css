@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #181818;
+    font-family: 'Press Start 2P', cursive;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    z-index: 2; /* Контент будет поверх фона */
+}
+
+.auth-box {
+    background-color: rgba(34, 34, 34, 0.8); /* Прозрачный темный фон для контента */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    text-align: center;
+    width: 300px;
+    z-index: 3; /* Убедимся, что форма выше фона */
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #f4a261;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin: 10px 0 5px;
+    font-size: 14px;
+    color: #ddd;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #f4a261;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #f4a261;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e76f51;
+}
+
+a {
+    color: #f4a261;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+/* Фон и размытие */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIysgz-Hf7hn8hcUPOIgaQChEOMicCwU63QwIG12qXSac1d23pf39o-ehn3epvqEgz1p8&usqp=CAU'); /* Замените на путь к вашему изображению */
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px); /* Размытие только фона */
+    z-index: 1; /* Фон будет под контентом */
+}
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #333; /* Цвет фона */
+    border: 1px solid #444; /* Цвет границы */
+    border-radius: 5px; /* Скругленные углы */
+    color: #fff; /* Цвет текста */
+    font-size: 14px; /* Размер шрифта */
+    font-family: 'Press Start 2P', cursive; /* Общий шрифт */
+    cursor: pointer; /* Указатель мыши */
+}
+
+select:focus {
+    outline: none; /* Убираем стандартное выделение */
+    border-color: #f4a261; /* Цвет границы при фокусе */
+    background-color: #444; /* Более яркий фон при фокусе */
+}
+
+
+

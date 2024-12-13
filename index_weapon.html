@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dead Cells - Оружие</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #222;
+            color: #fff;
+        }
+        table th, table td {
+            border: 1px solid #444;
+            padding: 10px;
+            text-align: left;
+        }
+        table th {
+            background-color: #333;
+        }
+        .form-container {
+            margin: 20px 0;
+        }
+        .form-container input, .form-container textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #333;
+            border: 1px solid #444;
+            border-radius: 5px;
+            color: #fff;
+        }
+        .form-container button {
+            background-color: #f4a261;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .form-container button:hover {
+            background-color: #e76f51;
+        }
+        .nav-bar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+        .nav-bar a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 14px;
+        }
+        .nav-bar a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Верхняя навигация -->
+        <div class="nav-bar">
+            <a href="index.php">Главная</a>
+            <a href="login.php">Войти</a>
+            <a href="register.php">Регистрация</a>
+        </div>
+
+        <!-- Список оружия -->
+        <h1>Список оружия</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Название</th>
+                    <th>Описание</th>
+                    <th>Урон</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php include 'fetch_weapons.php'; ?>
+            </tbody>
+        </table>
+
+        <!-- Форма добавления оружия (только для редакторов) -->
+        <?php if (isset($role) && $role === 'editor'): ?>
+            <div class="form-container">
+                <h2>Добавить новое оружие</h2>
+                <form action="fetch_weapon.php" method="POST">
+                    <input type="text" name="name" placeholder="Название оружия" required>
+                    <textarea name="description" placeholder="Описание" required></textarea>
+                    <input type="number" name="damage" placeholder="Урон" required>
+                    <button type="submit">Добавить</button>
+                </form>
+            </div>
+        <?php endif; ?>
+    </div>
+</body>
+</html>

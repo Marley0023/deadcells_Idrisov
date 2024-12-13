@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dead Cells - Регистрация</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Стили для уведомления об ошибке */
+        .error-message {
+            color: #e76f51; /* Цвет ошибки */
+            font-size: 12px; /* Размер текста */
+            margin-top: -5px; /* Коррекция отступа */
+            margin-bottom: 10px;
+            display: none; /* Скрыто по умолчанию */
+        }
+
+        input.error {
+            border-color: #e76f51; /* Красная граница для поля с ошибкой */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="auth-box">
+            <h1>Регистрация</h1>
+            <form id="register-form" action="register.php" method="POST">
+                <label for="username">Имя пользователя</label>
+                <input type="text" id="username" name="username" placeholder="Введите имя" required maxlength="15">
+                
+                <label for="email">Электронная почта</label>
+                <input type="email" id="email" name="email" placeholder="Введите почту" required>
+                
+                <label for="password">Пароль</label>
+                <input type="password" id="password" name="password" placeholder="Введите пароль" required>
+                <div class="error-message" id="password-error">
+                    Пароль должен быть не менее 8 символов и содержать хотя бы 1 специальный символ.
+                </div>
+                
+                <label for="confirm-password">Подтвердите пароль</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Подтвердите пароль" required>
+                <div class="error-message" id="confirm-password-error">
+                    Пароли не совпадают.
+                </div>
+                
+                <label for="role">Роль</label>
+                <select id="role" name="role" required>
+                    <option value="editor">Редактор</option>
+                    <option value="viewer">Просмотр</option>
+                </select>
+                
+                <button type="submit" class="btn">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Слушатель события отправки формы
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+            let valid = true;
+
+            // Поле пароля
+            const password = document.getElementById('password');
+            const passwordError = document.getElementById('password-error');
+            const passwordPattern = /^(?=.*[!@#$%^&*]).{8,}$/;
+
+            if (!passwordPattern.test(password.value)) {
+                password.classList.add('error');
+                passwordError.style.display = 'block';
+                valid = false;
+            } else {
+                password.classList.remove('error');
+                passwordError.style.display = 'none';
+            }
+
+            // Поле подтверждения пароля
+            const confirmPassword = document.getElementById('confirm-password');
+            const confirmPasswordError = document.getElementById('confirm-password-error');
+
+            if (password.value !== confirmPassword.value) {
+                confirmPassword.classList.add('error');
+                confirmPasswordError.style.display = 'block';
+                valid = false;
+            } else {
+                confirmPassword.classList.remove('error');
+                confirmPasswordError.style.display = 'none';
+            }
+
+            // Если есть ошибки, отменяем отправку формы
+            if (!valid) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
